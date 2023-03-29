@@ -3,6 +3,13 @@ Feature: Testing Place Order
   Background:
     Given User validate that Home Page is Visible Successfully
   @regression
+  Scenario: Testing Product Quantity in Cart
+    When User click View Product for any Product on Home Page
+    And User Validate Product Detail is Opened
+    And User Increase Quantity to 4
+    And User click Add to Cart Button
+    And User click View Cart Button
+    Then User validate Product is Displayed in Cart with Quantity 4
   Scenario: Testing Place Order Register while Checkout
     When User add products to cart
     And User Click Cart button
@@ -78,5 +85,12 @@ Feature: Testing Place Order
     And User Validate that Navigated to Brand 'https://automationexercise.com/brand_products/H&M' and 'BRAND - H&M PRODUCTS' are Displayed
     And User Click KOOKIE KIDS Brand Link
     Then User Validate that User Navigated to that Brand 'BRAND - KOOKIE KIDS PRODUCTS' and Products are Displayed
+
+  @regression
+  Scenario: Testing Search Products and Verify Cart After Login
+    When User clicks Products Button and Validate User navigated to All Products Page
+    And User enter product name in search and click button
+    And User validate searched products visible and all products related
+    And User validate
 
 
