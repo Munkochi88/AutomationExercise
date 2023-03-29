@@ -14,6 +14,9 @@ public class CartPage {
     }
     @FindBy(css = "#product-1")
     WebElement product;
+
+    //git practice whatever
+
     @FindBy(xpath = "//td//button")
     WebElement productQuantity;
     @FindBy(xpath = "//a[.='Proceed To Checkout']")
