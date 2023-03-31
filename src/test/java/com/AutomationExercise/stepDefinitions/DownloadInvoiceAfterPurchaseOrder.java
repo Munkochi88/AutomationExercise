@@ -22,5 +22,6 @@ public class DownloadInvoiceAfterPurchaseOrder {
         System.out.println(downloadedFile.getName());
         assertTrue(downloadedFile.exists());
         assertTrue(downloadedFile.length() > 0);
+        //downloadedFile.deleteOnExit();
     }
 }
