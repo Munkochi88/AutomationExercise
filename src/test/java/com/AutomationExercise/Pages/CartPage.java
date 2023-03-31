@@ -8,15 +8,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
 
+import java.util.List;
+
 public class CartPage {
     public CartPage(WebDriver driver){
         PageFactory.initElements(driver,this);
     }
     @FindBy(css = "#product-1")
     WebElement product;
-
-    //git practice whatever
-
     @FindBy(xpath = "//td//button")
     WebElement productQuantity;
     @FindBy(xpath = "//a[.='Proceed To Checkout']")
@@ -27,6 +26,8 @@ public class CartPage {
     WebElement xButton;
     @FindBy(tagName = "b")
     WebElement cartEmptyMessage;
+    @FindBy(xpath = "//tbody//tr")
+    List<WebElement> allProductsInCart;
     public void validatingProductIsDisplayedCartWithQuantity(int quantity){
         Assert.assertTrue(product.isDisplayed());
         Assert.assertEquals(String.valueOf(quantity), BrowserUtils.getText(productQuantity));
@@ -44,5 +45,10 @@ public class CartPage {
     }
     public void validatingProductRemoved(String message){
         Assert.assertEquals(message,BrowserUtils.getText(cartEmptyMessage));
+    }
+    public void validatingProductsAreVisible(){
+        for (WebElement product:allProductsInCart){
+            Assert.assertTrue(product.isDisplayed());
+        }
     }
 }

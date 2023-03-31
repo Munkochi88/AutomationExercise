@@ -13,6 +13,8 @@ public class CheckoutPage {
     }
     @FindBy(css = "#address_delivery")
     WebElement deliveryAddress;
+    @FindBy(css = "#address_invoice")
+    WebElement invoiceAddress;
     @FindBy(xpath = "//textarea[@name='message']")
     WebElement comment;
     @FindBy(xpath = "//a[.='Place Order']")
@@ -24,5 +26,8 @@ public class CheckoutPage {
     public void commentAndClickPlaceOrderButton(String description){
         this.comment.sendKeys(description);
         placeOrderButton.click();
+    }
+    public void validatingBillingAddress(String address){
+        Assert.assertTrue(BrowserUtils.getText(invoiceAddress).contains(address));
     }
 }

@@ -34,6 +34,10 @@ public class PaymentPage {
     WebElement payAndConfirmOrderButton;
     @FindBy(xpath = "//div[@id='success_message']//div")
     WebElement successMessage;
+    @FindBy(xpath = "//a[.='Download Invoice']")
+    WebElement downloadInvoiceButton;
+    @FindBy(xpath = "//a[.='Continue']")
+    WebElement continueButton;
     public void fillingPayment(){
     nameOnTheCard.sendKeys(ConfigReader.readProperty("nameOnCard"));
     cardNumber.sendKeys(ConfigReader.readProperty("cardNumber"));
@@ -61,5 +65,9 @@ public class PaymentPage {
 //        this.successMessage=wait.until(ExpectedConditions.visibilityOf(this.successMessage));
         Assert.assertEquals(successfulMessage,this.successMessage.getText());
         driver.navigate().forward();
+    }
+    public void clickDownloadInvoiceButtonAndVerifyInvoiceDownloadedAndClickContinueButton(){
+        downloadInvoiceButton.click();
+        continueButton.click();
     }
 }

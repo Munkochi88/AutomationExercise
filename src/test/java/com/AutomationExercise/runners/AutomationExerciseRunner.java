@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/AutomationExercise",
         glue = "com/AutomationExercise/stepDefinitions",
         dryRun = false,
-        tags = "@regression2",
+        tags = "@regression",
         plugin = {"pretty","html:target/uiReport.html","rerun:target/uiFailedTests.txt"}
 )
 public class AutomationExerciseRunner {

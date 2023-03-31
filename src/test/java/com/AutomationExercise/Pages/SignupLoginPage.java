@@ -42,7 +42,7 @@ public class SignupLoginPage {
 
     public void signup(){
         signupName.sendKeys("Jolie");
-        signupEmail.sendKeys("joo@gmail.com");
+        signupEmail.sendKeys("jol@gmail.com");
         signupButton.click();
     }
     public void login(){

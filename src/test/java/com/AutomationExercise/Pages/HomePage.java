@@ -39,7 +39,22 @@ public class HomePage {
     WebElement topsButtonUnderWomen;
     @FindBy(xpath = "//a[contains(text(),'Products')]")
     WebElement productsButton;
+    @FindBy(xpath = "//h2[.='recommended items']")
+    WebElement headerRecommendedItem;
+    @FindBy(xpath = "//div[@class='recommended_items']//a[.='Add to cart']")
+    List<WebElement> recommendedItemAddToCartButton;
 
+    public void clickingAddToCartOnRecommendedProduct() throws InterruptedException {
+        for (WebElement addToCart:recommendedItemAddToCartButton){
+            Thread.sleep(2000);
+            addToCart.click();
+            break;
+        }
+    }
+    public void validatingHeaderRecommendedItem(WebDriver driver,String header){
+        BrowserUtils.scrollWithJS(driver,headerRecommendedItem);
+        Assert.assertEquals(header,BrowserUtils.getText(headerRecommendedItem));
+    }
     public void clickingViewProductButton(){
         for (WebElement viewProductButton:viewProductButtons){
            viewProductButton.click();
