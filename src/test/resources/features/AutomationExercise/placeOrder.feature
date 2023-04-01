@@ -148,4 +148,9 @@ Feature: Testing Place Order
     And User Click Delete Account button
     Then User Verify 'ACCOUNT DELETED!' and click Continue button
 
+  @regression
+  Scenario: Testing Scroll Up using Arrow button and Scroll Down functionality
+    When User scroll down and validate 'SUBSCRIPTION'
+    Then User click scroll up button and validate header 'Full-Fledged practice website for Automation Engineers'
+
 

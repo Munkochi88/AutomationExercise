@@ -43,6 +43,12 @@ public class HomePage {
     WebElement headerRecommendedItem;
     @FindBy(xpath = "//div[@class='recommended_items']//a[.='Add to cart']")
     List<WebElement> recommendedItemAddToCartButton;
+    @FindBy(xpath = "//h2[.='Subscription']")
+    WebElement subscription;
+    @FindBy(xpath = "//h2[.='Full-Fledged practice website for Automation Engineers']")
+    WebElement headerFullFledged;
+    @FindBy(css = "#scrollUp")
+    WebElement scrollUpButton;
 
     public void clickingAddToCartOnRecommendedProduct() throws InterruptedException {
         for (WebElement addToCart:recommendedItemAddToCartButton){
@@ -95,6 +101,14 @@ public class HomePage {
     }
     public void clickingProductsButton(){
         productsButton.click();
+    }
+    public void scrollingDownAndValidatingSubscription(WebDriver driver,String subs){
+        BrowserUtils.scrollWithJS(driver,subscription);
+        Assert.assertEquals(subs,BrowserUtils.getText(subscription));
+    }
+    public void scrollUpFunctionalityAndValidatingHeader(String header){
+        scrollUpButton.click();
+        Assert.assertEquals(header,BrowserUtils.getText(headerFullFledged));
     }
 
 }
